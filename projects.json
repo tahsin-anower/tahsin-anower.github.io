@@ -1,0 +1,10 @@
+{
+  "projects": [
+    {
+      "title": "Example Project",
+      "summary": "Short one-line summary of the project.",
+      "tech": ["HTML","CSS","JavaScript"],
+      "link": ""
+    }
+  ]
+}

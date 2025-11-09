@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tahsin Anower — Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 id="name">Tahsin Anower</h1>
+      <p id="role">Undergraduate Engineering Student</p>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <h2>About</h2>
+      <p id="aboutText">I'm Tahsin, currently and undergrad student in IPE at Military Institute of Science & Technology. Deeply passionate about learning, exploring insights and widely open to networking opportunities.</p>
+      <a class="btn" href="resume.pdf" download>Download Resume (PDF)</a>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-grid" id="skillsGrid">
+        <!-- Populate with JS or place static items -->
+        <div class="skill">Typing</div>
+        <div class="skill">Teaching</div>
+        <div class="skill">Networking</div>
+        <div class="skill">Teamwork</div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <div id="projectsContainer" class="projects-grid">
+        <!-- projects loaded dynamically from projects.json -->
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience / Roles</h2>
+      <ul id="experienceList">
+        <li><strong>Event Operative</strong> — MIST Robotics Club (September 2025 to November 2025)</li>
+      </ul>
+    </section>
+
+    <section id="achievements">
+      <h2>Achievements</h2>
+      <ul>
+        <li>Achievement 1</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="tahsin.pro799@gmail.com">tahsin.pro799@gmail.com</a></p>
+      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input name="name" placeholder="Your name" required />
+        <input name="email" placeholder="Your email" type="email" required />
+        <textarea name="message" placeholder="Message" rows="4" required></textarea>
+        <button type="submit" class="btn">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Tahsin Anower — <a href="https://github.com/tahsin-anower">GitHub</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
