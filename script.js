@@ -152,3 +152,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+// JavaScript hover effect as backup
+const profileImage = document.getElementById('profileImage');
+
+if (profileImage) {
+    profileImage.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.15)';
+        this.style.transition = 'all 0.3s ease';
+        this.style.boxShadow = '0 0 30px rgba(99, 102, 241, 0.5)';
+    });
+    
+    profileImage.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+        this.style.boxShadow = 'none';
+    });
+}
