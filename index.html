@@ -4,78 +4,352 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tahsin Anower — Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="site-header">
+  <!-- Loading Screen -->
+  <div id="loading" class="loading">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span>Tahsin</span>
+      </div>
+      <div class="nav-menu">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="nav-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home" class="hero-section">
+    <div class="hero-bg-animation">
+      <div class="floating-shape shape1"></div>
+      <div class="floating-shape shape2"></div>
+      <div class="floating-shape shape3"></div>
+    </div>
     <div class="container">
-      <h1 id="name">Tahsin Anower</h1>
-      <p id="role">Undergraduate Engineering Student</p>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <div class="hero-content">
+        <div class="hero-image">
+          <div class="image-container">
+            <img src="images.jpg" alt="Tahsin Anower" id="profileImage">
+            <div class="image-border"></div>
+          </div>
+          <div class="status-indicator">
+            <span class="status-dot"></span>
+            <span>Available for opportunities</span>
+          </div>
+        </div>
+        <div class="hero-text">
+          <h1 class="hero-title">
+            <span class="greeting">Hello, I'm</span>
+            <span class="name-highlight">Tahsin Anower</span>
+          </h1>
+          <div class="typewriter-container">
+            <p class="typewriter" id="typewriter"></p>
+          </div>
+          <p class="hero-description">
+            Undergraduate Engineering Student at Military Institute of Science & Technology. 
+            Passionate about innovation, technology, and creating impactful solutions.
+          </p>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i>
+              Get In Touch
+            </a>
+            <a href="#projects" class="btn btn-secondary">
+              <i class="fas fa-code"></i>
+              View Projects
+            </a>
+          </div>
+          <div class="social-links">
+            <a href="https://github.com/tahsin-anower" class="social-link">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" class="social-link">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="mailto:tahsin.pro799@gmail.com" class="social-link">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <span>Scroll Down</span>
+        <div class="scroll-arrow"></div>
+      </div>
     </div>
   </header>
 
   <main class="container">
-    <section id="about">
-      <h2>About</h2>
-      <p id="aboutText">I'm Tahsin, currently and undergrad student in IPE at Military Institute of Science & Technology. Deeply passionate about learning, exploring insights and widely open to networking opportunities.</p>
-      <a class="btn" href="resume.pdf" download>Download Resume (PDF)</a>
-    </section>
-
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="skills-grid" id="skillsGrid">
-        <!-- Populate with JS or place static items -->
-        <div class="skill">Typing</div>
-        <div class="skill">Teaching</div>
-        <div class="skill">Networking</div>
-        <div class="skill">Teamwork</div>
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="section-header">
+        <h2 class="section-title">About Me</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p class="about-intro">
+            I'm <span class="highlight">Tahsin Anower</span>, currently pursuing my undergraduate degree in 
+            Industrial & Production Engineering (IPE) at Military Institute of Science & Technology.
+          </p>
+          <div class="about-details">
+            <div class="detail-item">
+              <i class="fas fa-graduation-cap"></i>
+              <div>
+                <h4>Education</h4>
+                <p>B.Sc. in Industrial & Production Engineering</p>
+                <span class="detail-meta">MIST University</span>
+              </div>
+            </div>
+            <div class="detail-item">
+              <i class="fas fa-bullseye"></i>
+              <div>
+                <h4>Interests</h4>
+                <p>Web Development, Robotics, AI/ML, Innovation</p>
+                <span class="detail-meta">Always Learning</span>
+              </div>
+            </div>
+          </div>
+          <p class="about-passion">
+            Deeply passionate about learning, exploring insights, and widely open to networking opportunities. 
+            I believe in the power of technology to transform ideas into reality.
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-number" data-target="5">0</div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="2">0</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="10">0</div>
+            <div class="stat-label">Technologies</div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section id="projects">
-      <h2>Projects</h2>
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+      <div class="section-header">
+        <h2 class="section-title">My Skills</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Technologies and tools I work with</p>
+      </div>
+      <div class="skills-container">
+        <div class="skills-category">
+          <h3 class="category-title">
+            <i class="fas fa-code"></i>
+            Technical Skills
+          </h3>
+          <div class="skills-grid">
+            <div class="skill-card" data-skill="90">
+              <div class="skill-header">
+                <span class="skill-name">Web Development</span>
+                <span class="skill-percent">90%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress"></div>
+              </div>
+            </div>
+            <div class="skill-card" data-skill="85">
+              <div class="skill-header">
+                <span class="skill-name">JavaScript</span>
+                <span class="skill-percent">85%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress"></div>
+              </div>
+            </div>
+            <div class="skill-card" data-skill="80">
+              <div class="skill-header">
+                <span class="skill-name">Python</span>
+                <span class="skill-percent">80%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress"></div>
+              </div>
+            </div>
+            <div class="skill-card" data-skill="75">
+              <div class="skill-header">
+                <span class="skill-name">UI/UX Design</span>
+                <span class="skill-percent">75%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skills-category">
+          <h3 class="category-title">
+            <i class="fas fa-users"></i>
+            Professional Skills
+          </h3>
+          <div class="skills-grid">
+            <div class="skill-tag">Typing</div>
+            <div class="skill-tag">Teaching</div>
+            <div class="skill-tag">Networking</div>
+            <div class="skill-tag">Teamwork</div>
+            <div class="skill-tag">Leadership</div>
+            <div class="skill-tag">Problem Solving</div>
+            <div class="skill-tag">Communication</div>
+            <div class="skill-tag">Project Management</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+      <div class="section-header">
+        <h2 class="section-title">My Projects</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Some of my recent work</p>
+      </div>
+      <div class="projects-filter">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web Dev</button>
+        <button class="filter-btn" data-filter="ai">AI/ML</button>
+        <button class="filter-btn" data-filter="robotics">Robotics</button>
+      </div>
       <div id="projectsContainer" class="projects-grid">
-        <!-- projects loaded dynamically from projects.json -->
+        <!-- Projects will be loaded dynamically -->
       </div>
     </section>
 
-    <section id="experience">
-      <h2>Experience / Roles</h2>
-      <ul id="experienceList">
-        <li><strong>Event Operative</strong> — MIST Robotics Club (September 2025 to November 2025)</li>
-      </ul>
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Experience & Roles</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">Sep 2025 - Nov 2025</div>
+          <div class="timeline-content">
+            <h3>Event Operative</h3>
+            <span class="timeline-company">MIST Robotics Club</span>
+            <p>Organized and managed robotics events, coordinated with team members, and ensured smooth execution of club activities.</p>
+            <div class="timeline-tags">
+              <span class="tag">Event Management</span>
+              <span class="tag">Team Coordination</span>
+              <span class="tag">Robotics</span>
+            </div>
+          </div>
+        </div>
+        <!-- Add more timeline items as needed -->
+      </div>
     </section>
 
-    <section id="achievements">
-      <h2>Achievements</h2>
-      <ul>
-        <li>Achievement 1</li>
-      </ul>
-    </section>
-
-    <section id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="tahsin.pro799@gmail.com">tahsin.pro799@gmail.com</a></p>
-      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <input name="name" placeholder="Your name" required />
-        <input name="email" placeholder="Your email" type="email" required />
-        <textarea name="message" placeholder="Message" rows="4" required></textarea>
-        <button type="submit" class="btn">Send</button>
-      </form>
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+      <div class="section-header">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">Let's work together!</p>
+      </div>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:tahsin.pro799@gmail.com">tahsin.pro799@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Location</h4>
+              <p>Dhaka, Bangladesh</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <h4>Phone</h4>
+              <p>+880 1XXX-XXXXXX</p>
+            </div>
+          </div>
+        </div>
+        <form id="contactForm" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="form-group">
+            <input type="email" name="email" placeholder="Your Email" required>
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div class="form-group">
+            <input type="text" name="subject" placeholder="Subject" required>
+            <i class="fas fa-tag"></i>
+          </div>
+          <div class="form-group">
+            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+            <i class="fas fa-comment"></i>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <i class="fas fa-paper-plane"></i>
+            Send Message
+          </button>
+        </form>
+      </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container">
-      <p>© <span id="year"></span> Tahsin Anower — <a href="https://github.com/tahsin-anower">GitHub</a></p>
+      <div class="footer-content">
+        <div class="footer-text">
+          <h3>Tahsin Anower</h3>
+          <p>Engineering Student & Developer</p>
+        </div>
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-social">
+          <a href="https://github.com/tahsin-anower"><i class="fab fa-github"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> Tahsin Anower. All rights reserved.</p>
+      </div>
     </div>
   </footer>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="back-to-top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
   <script src="script.js"></script>
 </body>
