@@ -152,18 +152,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-// JavaScript hover effect as backup
-const profileImage = document.getElementById('profileImage');
-
-if (profileImage) {
-    profileImage.addEventListener('mouseenter', function() {
-        this.style.transform = 'scale(1.15)';
-        this.style.transition = 'all 0.3s ease';
-        this.style.boxShadow = '0 0 30px rgba(99, 102, 241, 0.5)';
-    });
+// Add click ripple effect to profile image
+document.getElementById('profileImage').addEventListener('click', function(e) {
+    const ripple = document.createElement('div');
+    ripple.classList.add('ripple');
     
-    profileImage.addEventListener('mouseleave', function() {
-        this.style.transform = 'scale(1)';
-        this.style.boxShadow = 'none';
-    });
-}
+    const rect = this.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = e.clientX - rect.left - size / 2;
+    const y = e.clientY - rect.top - size / 2;
+    
+    ripple.style.width = ripple.style.height = size + 'px';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
+    
+    this.appendChild(ripple);
+    
+    setTimeout(() => {
+        ripple.remove();
+    }, 600);
+});
