@@ -975,4 +975,12 @@ body {
   margin-bottom: 0.5rem;
   background: var(--gradient);
   -webkit-background-clip: text
-  
+  #profileImage {
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+#profileImage:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
+}
