@@ -152,3 +152,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+// Click to change profile image (cycle through multiple images)
+let currentImageIndex = 0;
+const profileImages = [
+    'images/profile.jpg',
+    'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=300&h=300&fit=crop',
+    'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=300&h=300&fit=crop'
+];
+
+document.getElementById('profileImage').addEventListener('click', function() {
+    currentImageIndex = (currentImageIndex + 1) % profileImages.length;
+    this.src = profileImages[currentImageIndex];
+});
