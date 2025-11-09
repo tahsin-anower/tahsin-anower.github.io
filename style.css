@@ -33,7 +33,16 @@
   border: 4px solid rgba(255, 255, 255, 0.2);
   display: block;
 }
+/* Add this to your existing #profileImage styles */
+#profileImage {
+  transition: all 0.3s ease;  /* This makes the animation smooth */
+  cursor: pointer;           /* Changes cursor to hand on hover */
+}
 
+#profileImage:hover {
+  transform: scale(1.1);     /* Makes image 10% bigger */
+  box-shadow: 0 0 30px rgba(99, 102, 241, 0.5); /* Adds glow effect */
+}
 .image-border {
   position: absolute;
   top: -10px;
@@ -978,9 +987,4 @@ body {
   #profileImage {
   transition: all 0.3s ease;
   cursor: pointer;
-}
-
-#profileImage:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 30px rgba(99, 102, 241, 0.5);
 }
