@@ -257,12 +257,12 @@ body {
 
 /* Move hero text down */
 .hero-text {
-  padding-top: 3rem; /* Adjust this value as needed */
+  padding-top: 4rem; /* Adjust this value as needed */
 }
 
 /* Or alternatively, you can use margin */
 .hero-text {
-  margin-top: 3rem; /* Adjust this value as needed */
+  margin-top: 4rem; /* Adjust this value as needed */
 }
 
 .hero-image {
