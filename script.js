@@ -1,4 +1,4 @@
-// script.js - Fixed version without loading issues
+// script.js - Enhanced with Dynamic Typewriter Effect
 document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -14,74 +14,67 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Enhanced Typewriter Effect with Multiple Roles
-function initTypewriter() {
-    const typewriterElement = document.getElementById('typewriter');
-    if (!typewriterElement) return;
+    function initTypewriter() {
+        const typewriterElement = document.getElementById('typewriter');
+        if (!typewriterElement) return;
 
-    const roles = [
-        'Undergraduate Student of IPE',
-        'Tech Enthusiast',
-        'Web Developer',
-        'Problem Solver',
-        'Innovator'
-    ];
-    
-    let roleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let isPaused = false;
+        const roles = [
+            'Undergraduate Student of IPE',
+            'Tech Enthusiast',
+            'Web Developer',
+            'Problem Solver',
+            'Innovator'
+        ];
+        
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let isPaused = false;
 
-    function type() {
-        if (isPaused) return;
-        
-        const currentRole = roles[roleIndex];
-        
-        if (isDeleting) {
-            // Deleting text
-            typewriterElement.textContent = currentRole.substring(0, charIndex - 1);
-            charIndex--;
-        } else {
-            // Typing text
-            typewriterElement.textContent = currentRole.substring(0, charIndex + 1);
-            charIndex++;
+        function type() {
+            if (isPaused) return;
+            
+            const currentRole = roles[roleIndex];
+            
+            if (isDeleting) {
+                // Deleting text
+                typewriterElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                // Typing text
+                typewriterElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            // Set typing speed
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                // Pause at the end of typing
+                isPaused = true;
+                typeSpeed = 2000; // Pause for 2 seconds
+                setTimeout(() => {
+                    isPaused = false;
+                    isDeleting = true;
+                    type();
+                }, typeSpeed);
+                return;
+            } else if (isDeleting && charIndex === 0) {
+                // Move to next role when deletion complete
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typeSpeed = 500; // Pause before starting next role
+            }
+
+            setTimeout(type, typeSpeed);
         }
 
-        // Set typing speed
-        let typeSpeed = isDeleting ? 50 : 100;
-
-        if (!isDeleting && charIndex === currentRole.length) {
-            // Pause at the end of typing
-            isPaused = true;
-            typeSpeed = 2000; // Pause for 2 seconds
-            setTimeout(() => {
-                isPaused = false;
-                isDeleting = true;
-                type();
-            }, typeSpeed);
-            return;
-        } else if (isDeleting && charIndex === 0) {
-            // Move to next role when deletion complete
-            isDeleting = false;
-            roleIndex = (roleIndex + 1) % roles.length;
-            typeSpeed = 500; // Pause before starting next role
-        }
-
-        setTimeout(type, typeSpeed);
+        // Start the typewriter effect after a brief delay
+        setTimeout(type, 1000);
     }
 
-    // Start the typewriter effect after a brief delay
-    setTimeout(type, 1000);
-}
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Your existing DOMContentLoaded code...
-    
     // Initialize enhanced typewriter
     initTypewriter();
-    
-    // Rest of your existing code...
-});
 
     // Animate skill bars
     const animateSkills = () => {
@@ -186,24 +179,28 @@ document.addEventListener('DOMContentLoaded', function() {
             this.reset();
         });
     }
-});
-// Add click ripple effect to profile image
-document.getElementById('profileImage').addEventListener('click', function(e) {
-    const ripple = document.createElement('div');
-    ripple.classList.add('ripple');
-    
-    const rect = this.getBoundingClientRect();
-    const size = Math.max(rect.width, rect.height);
-    const x = e.clientX - rect.left - size / 2;
-    const y = e.clientY - rect.top - size / 2;
-    
-    ripple.style.width = ripple.style.height = size + 'px';
-    ripple.style.left = x + 'px';
-    ripple.style.top = y + 'px';
-    
-    this.appendChild(ripple);
-    
-    setTimeout(() => {
-        ripple.remove();
-    }, 600);
+
+    // Add click ripple effect to profile image
+    const profileImage = document.getElementById('profileImage');
+    if (profileImage) {
+        profileImage.addEventListener('click', function(e) {
+            const ripple = document.createElement('div');
+            ripple.classList.add('ripple');
+            
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    }
 });
