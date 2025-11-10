@@ -304,21 +304,6 @@ body {
   transform: translateZ(0);
 }
 
-/* Hover Effects */
-.image-container:hover .profile-image-wrapper {
-  transform: rotateY(10deg) rotateX(5deg);
-}
-
-.image-container:hover #profileImage {
-  transform: scale(1.08) translateZ(20px);
-  filter: grayscale(0) brightness(1.1) contrast(1.05);
-  box-shadow: 
-    0 0 0 8px rgba(99, 102, 241, 0.3),
-    0 0 50px rgba(99, 102, 241, 0.6),
-    0 0 100px rgba(99, 102, 241, 0.3);
-  border-color: rgba(99, 102, 241, 0.8);
-}
-
 /* Animated Border */
 .image-border {
   position: absolute;
