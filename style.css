@@ -128,7 +128,176 @@ body {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   overflow: hidden;
 }
+/* Enhanced Hero Text Styles */
+.hero-text {
+  max-width: 600px;
+  padding-left: 2rem;
+}
 
+.intro-container {
+  animation: fadeInUp 1s ease-out;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.greeting {
+  display: block;
+  font-size: 1.8rem;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.name-highlight {
+  background: linear-gradient(45deg, #f59e0b, #ef4444, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease infinite;
+}
+
+/* Dynamic Text Container */
+.dynamic-text-container {
+  margin: 2rem 0;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.typewriter-wrapper {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.static-text {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.typewriter-text {
+  color: var(--accent);
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+  position: relative;
+}
+
+.typewriter-cursor {
+  color: var(--accent);
+  font-weight: bold;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+/* Enhanced Typewriter Effects */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Text Glow Effect */
+.text-glow {
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes textGlow {
+  from {
+    text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+  }
+  to {
+    text-shadow: 0 0 20px rgba(245, 158, 11, 0.6), 
+                 0 0 30px rgba(245, 158, 11, 0.4);
+  }
+}
+
+.hero-description {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.9;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  animation: fadeInUp 1s ease-out 0.9s both;
+}
+
+/* Responsive Design for Hero Section */
+@media (max-width: 768px) {
+  .hero-text {
+    padding-left: 0;
+    text-align: center;
+  }
+  
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .typewriter-wrapper {
+    font-size: 1.8rem;
+    justify-content: center;
+  }
+  
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .btn {
+    width: 200px;
+    justify-content: center;
+  }
+}
 .hero-bg-animation {
   position: absolute;
   top: 0;

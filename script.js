@@ -13,40 +13,75 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Typewriter effect
+    // Enhanced Typewriter Effect with Multiple Roles
+function initTypewriter() {
     const typewriterElement = document.getElementById('typewriter');
-    if (typewriterElement) {
-        const texts = ['Web Developer', 'Engineering Student', 'Problem Solver', 'Tech Enthusiast'];
-        let textIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
+    if (!typewriterElement) return;
 
-        function typeWriter() {
-            const currentText = texts[textIndex];
-            
-            if (isDeleting) {
-                typewriterElement.textContent = currentText.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typewriterElement.textContent = currentText.substring(0, charIndex + 1);
-                charIndex++;
-            }
+    const roles = [
+        'Undergraduate Student of IPE',
+        'Tech Enthusiast',
+        'Web Developer',
+        'Problem Solver',
+        'Innovator'
+    ];
+    
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let isPaused = false;
 
-            let typeSpeed = isDeleting ? 50 : 100;
-
-            if (!isDeleting && charIndex === currentText.length) {
-                typeSpeed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                textIndex = (textIndex + 1) % texts.length;
-                typeSpeed = 500;
-            }
-
-            setTimeout(typeWriter, typeSpeed);
+    function type() {
+        if (isPaused) return;
+        
+        const currentRole = roles[roleIndex];
+        
+        if (isDeleting) {
+            // Deleting text
+            typewriterElement.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
+        } else {
+            // Typing text
+            typewriterElement.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
         }
-        typeWriter();
+
+        // Set typing speed
+        let typeSpeed = isDeleting ? 50 : 100;
+
+        if (!isDeleting && charIndex === currentRole.length) {
+            // Pause at the end of typing
+            isPaused = true;
+            typeSpeed = 2000; // Pause for 2 seconds
+            setTimeout(() => {
+                isPaused = false;
+                isDeleting = true;
+                type();
+            }, typeSpeed);
+            return;
+        } else if (isDeleting && charIndex === 0) {
+            // Move to next role when deletion complete
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            typeSpeed = 500; // Pause before starting next role
+        }
+
+        setTimeout(type, typeSpeed);
     }
+
+    // Start the typewriter effect after a brief delay
+    setTimeout(type, 1000);
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Your existing DOMContentLoaded code...
+    
+    // Initialize enhanced typewriter
+    initTypewriter();
+    
+    // Rest of your existing code...
+});
 
     // Animate skill bars
     const animateSkills = () => {
