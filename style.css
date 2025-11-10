@@ -255,6 +255,16 @@ body {
   min-height: 80vh;
 }
 
+/* Move hero text down */
+.hero-text {
+  padding-top: 2rem; /* Adjust this value as needed */
+}
+
+/* Or alternatively, you can use margin */
+.hero-text {
+  margin-top: 2rem; /* Adjust this value as needed */
+}
+
 .hero-image {
   display: flex;
   flex-direction: column;
