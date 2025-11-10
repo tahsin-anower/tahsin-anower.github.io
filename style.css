@@ -1,4 +1,4 @@
-/* style.css - Updated with Dynamic Hero Section */
+/* style.css - Updated with Correct Hero Section Positioning */
 :root {
   --primary: #6366f1;
   --primary-dark: #4f46e5;
@@ -372,14 +372,14 @@ body {
 
 .hero-title {
   font-size: 3.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   line-height: 1.1;
 }
 
-.greeting {
+.main-name {
   display: block;
-  font-size: 1.8rem;
-  opacity: 0.9;
+  font-size: 3rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
   color: rgba(255, 255, 255, 0.9);
   animation: slideInLeft 0.8s ease-out;
@@ -395,14 +395,14 @@ body {
 
 /* Dynamic Text Container */
 .dynamic-text-container {
-  margin: 2rem 0;
-  min-height: 80px;
+  margin: 1rem 0 2rem 0;
+  min-height: 60px;
   display: flex;
   align-items: center;
 }
 
 .typewriter-wrapper {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: white;
   display: flex;
@@ -413,11 +413,13 @@ body {
 
 .static-text {
   color: rgba(255, 255, 255, 0.9);
+  font-size: 2.5rem;
 }
 
 .typewriter-text {
   color: var(--accent);
   font-weight: 800;
+  font-size: 2.5rem;
   text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
   position: relative;
 }
@@ -425,6 +427,7 @@ body {
 .typewriter-cursor {
   color: var(--accent);
   font-weight: bold;
+  font-size: 2.5rem;
   animation: blink 1s infinite;
   margin-left: 2px;
 }
@@ -596,30 +599,6 @@ body {
 .social-link:hover {
   transform: translateY(-3px) scale(1.1);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  text-align: center;
-  opacity: 0.7;
-  animation: bounce 2s infinite;
-}
-
-.scroll-arrow {
-  width: 2px;
-  height: 20px;
-  background: white;
-  margin: 0.5rem auto 0;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-  40% { transform: translateX(-50%) translateY(-10px); }
-  60% { transform: translateX(-50%) translateY(-5px); }
 }
 
 /* Sections */
@@ -1215,9 +1194,19 @@ body {
     font-size: 2.8rem;
   }
   
+  .main-name {
+    font-size: 2.5rem;
+  }
+  
   .typewriter-wrapper {
-    font-size: 1.8rem;
+    font-size: 2rem;
     justify-content: center;
+  }
+  
+  .static-text,
+  .typewriter-text,
+  .typewriter-cursor {
+    font-size: 2rem;
   }
   
   .hero-buttons {

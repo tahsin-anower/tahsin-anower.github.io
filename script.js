@@ -1,4 +1,4 @@
-// script.js - Enhanced with Dynamic Typewriter Effect
+// script.js - Enhanced with "I'm a Pro" Typewriter Effect
 document.addEventListener('DOMContentLoaded', function() {
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -13,17 +13,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Enhanced Typewriter Effect with Multiple Roles
+    // Enhanced Typewriter Effect with "Pro" focus
     function initTypewriter() {
         const typewriterElement = document.getElementById('typewriter');
         if (!typewriterElement) return;
 
         const roles = [
-            'Undergraduate Student of IPE',
+            'Pro',
+            'Undergraduate Student',
             'Tech Enthusiast',
             'Web Developer',
-            'Problem Solver',
-            'Innovator'
+            'Problem Solver'
         ];
         
         let roleIndex = 0;
@@ -46,13 +46,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 charIndex++;
             }
 
-            // Set typing speed
-            let typeSpeed = isDeleting ? 50 : 100;
+            // Set typing speed - faster for "Pro"
+            let typeSpeed = isDeleting ? 40 : (currentRole === 'Pro' ? 80 : 100);
 
             if (!isDeleting && charIndex === currentRole.length) {
-                // Pause at the end of typing
+                // Pause at the end of typing - longer pause for "Pro"
                 isPaused = true;
-                typeSpeed = 2000; // Pause for 2 seconds
+                typeSpeed = currentRole === 'Pro' ? 3000 : 2000;
                 setTimeout(() => {
                     isPaused = false;
                     isDeleting = true;
