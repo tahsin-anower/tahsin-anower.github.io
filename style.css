@@ -336,6 +336,35 @@ body {
   z-index: 0;
 }
 
+/* Remove image hover effects but keep pulsing glow border */
+.image-container:hover .profile-image-wrapper {
+  transform: none; /* Remove rotation on hover */
+}
+
+.image-container:hover #profileImage {
+  transform: none; /* Remove scale on hover */
+  filter: grayscale(0.2) brightness(1); /* Keep original filter */
+  box-shadow: none; /* Remove extra glow on hover */
+  border-color: rgba(255, 255, 255, 0.2); /* Keep original border */
+}
+
+/* Keep the pulsing glow effect always visible */
+.image-glow {
+  opacity: 0.3; /* Make glow always visible */
+  animation: pulseGlow 4s ease-in-out infinite; /* Keep pulsing animation */
+}
+
+.image-container:hover .image-glow {
+  opacity: 0.3; /* Keep same opacity on hover (no change) */
+  animation: pulseGlow 4s ease-in-out infinite; /* Keep same animation */
+}
+
+/* Keep status indicator unchanged on hover */
+.image-container:hover ~ .status-indicator {
+  transform: none; /* Remove lift effect */
+  background: rgba(255, 255, 255, 0.15); /* Keep original background */
+}
+
 .image-container:hover .image-glow {
   opacity: 0.6;
   animation: pulseGlow 2s ease-in-out infinite;
