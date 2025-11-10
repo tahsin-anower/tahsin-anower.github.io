@@ -13,69 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Enhanced Typewriter Effect with "Pro" focus
-    function initTypewriter() {
-        const typewriterElement = document.getElementById('typewriter');
-        if (!typewriterElement) return;
-
-        const roles = [
-            'Pro',
-            'Undergraduate Student',
-            'Tech Enthusiast',
-            'Web Developer',
-            'Problem Solver'
-        ];
-        
-        let roleIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let isPaused = false;
-
-        function type() {
-            if (isPaused) return;
-            
-            const currentRole = roles[roleIndex];
-            
-            if (isDeleting) {
-                // Deleting text
-                typewriterElement.textContent = currentRole.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                // Typing text
-                typewriterElement.textContent = currentRole.substring(0, charIndex + 1);
-                charIndex++;
-            }
-
-            // Set typing speed - faster for "Pro"
-            let typeSpeed = isDeleting ? 40 : (currentRole === 'Pro' ? 80 : 100);
-
-            if (!isDeleting && charIndex === currentRole.length) {
-                // Pause at the end of typing - longer pause for "Pro"
-                isPaused = true;
-                typeSpeed = currentRole === 'Pro' ? 3000 : 2000;
-                setTimeout(() => {
-                    isPaused = false;
-                    isDeleting = true;
-                    type();
-                }, typeSpeed);
-                return;
-            } else if (isDeleting && charIndex === 0) {
-                // Move to next role when deletion complete
-                isDeleting = false;
-                roleIndex = (roleIndex + 1) % roles.length;
-                typeSpeed = 500; // Pause before starting next role
-            }
-
-            setTimeout(type, typeSpeed);
-        }
-
-        // Start the typewriter effect after a brief delay
-        setTimeout(type, 1000);
-    }
-
-    // Initialize enhanced typewriter
-    initTypewriter();
-
     // Animate skill bars
     const animateSkills = () => {
         const skillCards = document.querySelectorAll('.skill-card');

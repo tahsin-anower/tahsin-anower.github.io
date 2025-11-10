@@ -137,6 +137,76 @@ body {
   height: 100%;
 }
 
+/* Morphing Text Effect - Add this to your CSS */
+.morphing-text-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0 2rem 0;
+  min-height: 80px;
+}
+
+.morphing-text-wrapper {
+  position: relative;
+  display: inline-block;
+  height: 60px;
+  width: 300px;
+}
+
+.morphing-word {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  color: var(--accent);
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+  animation: morphing 15s infinite;
+  white-space: nowrap;
+}
+
+.morphing-word:nth-child(1) { animation-delay: 0s; }
+.morphing-word:nth-child(2) { animation-delay: 3s; }
+.morphing-word:nth-child(3) { animation-delay: 6s; }
+.morphing-word:nth-child(4) { animation-delay: 9s; }
+.morphing-word:nth-child(5) { animation-delay: 12s; }
+
+@keyframes morphing {
+  0% { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.9);
+    filter: blur(3px);
+  }
+  5% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  20% { 
+    opacity: 1; 
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+  25% { 
+    opacity: 0; 
+    transform: translateY(-20px) scale(0.9);
+    filter: blur(3px);
+  }
+  100% { 
+    opacity: 0; 
+    transform: translateY(-20px) scale(0.9);
+    filter: blur(3px);
+  }
+}
+
+/* Keep the static text styling */
+.static-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
 .floating-shape {
   position: absolute;
   border-radius: 50%;
