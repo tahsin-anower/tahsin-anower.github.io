@@ -1,5 +1,32 @@
-// script.js - Enhanced with "I'm a Pro" Typewriter Effect
+// script.js - Updated with Dark/Light Mode Toggle
 document.addEventListener('DOMContentLoaded', function() {
+    // Dark/Light Mode Toggle Functionality
+    function initThemeToggle() {
+        const themeToggle = document.getElementById('themeToggle');
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        
+        // Check for saved theme preference or use OS preference
+        const currentTheme = localStorage.getItem('theme');
+        
+        if (currentTheme === 'dark' || (!currentTheme && prefersDarkScheme.matches)) {
+            document.body.classList.add('dark-mode');
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            
+            // Save theme preference
+            if (document.body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
+
+    // Initialize theme toggle
+    initThemeToggle();
+
     // Set current year in footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
