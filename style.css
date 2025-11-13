@@ -1368,6 +1368,31 @@ body.dark-mode .skills-category:first-child .skill-bar {
   margin-top: 1.5rem;
 }
 
+/* Specific width adjustment for Technical Skills */
+.skills-category:first-child {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.skills-category:first-child .skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.skills-category:first-child .skill-card {
+  background: linear-gradient(145deg, #ffffff, #f8fafc);
+  padding: 1.5rem 2.5rem; /* Increased horizontal padding */
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
 /* Keep Professional Skills centered */
 .skills-category:last-child {
   text-align: center;
