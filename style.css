@@ -944,6 +944,36 @@ body.dark-mode .contact-item a:hover {
   transform: translateY(-2px);
 }
 
+/* Update Technical Skills header to match Professional Skills style */
+.skills-category:first-child .category-title {
+  justify-content: center;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+/* Center the Technical Skills content */
+.skills-category:first-child .skills-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Update skill cards in Technical Skills to be centered */
+.skills-category:first-child .skill-card {
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Center the skill header content */
+.skills-category:first-child .skill-header {
+  justify-content: center;
+  gap: 1rem;
+}
+
 /* Enhanced Professional Skills Section */
 .skills-category:last-child {
   text-align: center;
