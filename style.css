@@ -1380,7 +1380,7 @@ body.dark-mode .skills-category:first-child .skill-bar {
 
 .skills-category:first-child .skill-card {
   background: linear-gradient(145deg, #ffffff, #f8fafc);
-  padding: 1.5rem 3rem; /* Increased horizontal padding */
+  padding: 1.5rem 8rem; /* Increased horizontal padding */
   border-radius: 15px;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
