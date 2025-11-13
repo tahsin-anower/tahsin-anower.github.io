@@ -1127,6 +1127,53 @@ body.dark-mode .skills-category:first-child .skill-name {
   color: var(--text);
 }
 
+/* Center only the Technical Skills header, keep content left-aligned */
+.skills-category:first-child .category-title {
+  justify-content: center;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Reset the Technical Skills grid to left alignment */
+.skills-category:first-child .skills-grid {
+  display: block;
+  max-width: none;
+  margin: 0;
+}
+
+.skills-category:first-child .skill-card {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.skills-category:first-child .skill-header {
+  justify-content: space-between;
+}
+
+/* Ensure Professional Skills section stays centered */
+.skills-category:last-child {
+  text-align: center;
+}
+
+.skills-category:last-child .category-title {
+  justify-content: center;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.skills-category:last-child .skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
 /* Projects Section */
 .projects-filter {
   display: flex;
