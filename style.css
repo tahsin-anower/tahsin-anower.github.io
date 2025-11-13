@@ -1368,57 +1368,64 @@ body.dark-mode .skills-category:first-child .skill-bar {
   margin-top: 1.5rem;
 }
 
-/* Increase horizontal width of Technical Skills cards */
-.skills-category:first-child .skills-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  width: 100%;
-  max-width: 1000px; /* Increased horizontal width */
-  margin: 0 auto;
+.skills-grid {
+  display: grid;
+  gap: 1rem;
 }
 
-.skills-category:first-child .skill-card {
-  background: linear-gradient(145deg, #ffffff, #f8fafc);
-  padding: 1.5rem 8rem; /* Increased horizontal padding */
-  border-radius: 15px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  position: relative;
-  overflow: hidden;
-  width: 100%;
+.skill-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
 }
 
-/* Adjust skill header to utilize the extra width */
-.skills-category:first-child .skill-header {
+.skill-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
-  width: 100%;
-  gap: 2rem; /* Added gap for better spacing */
 }
 
-.skills-category:first-child .skill-name {
-  font-weight: 700;
+.skill-name {
+  font-weight: 600;
   color: var(--text);
-  font-size: 1.1rem;
-  flex: 1;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.4;
 }
 
-.skills-category:first-child .skill-percent {
+.skill-percent {
   color: var(--primary);
-  font-weight: 800;
-  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.skill-bar {
+  height: 8px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
   background: var(--gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  flex-shrink: 0;
-  min-width: 60px; /* Ensure percentage has enough space */
-  text-align: right;
+  border-radius: 4px;
+  width: 0;
+  transition: width 1.5s ease;
+}
+
+.skill-tag {
+  display: inline-block;
+  background: var(--gradient);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 0.25rem;
+  transition: transform 0.3s ease;
+}
+
+.skill-tag:hover {
+  transform: translateY(-2px);
 }
 
 /* Make progress bar utilize the full width */
