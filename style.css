@@ -1046,6 +1046,87 @@ body.dark-mode .skills-category:last-child .skill-tag:hover {
   box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
 }
 
+/* Fix for Technical Skills Section */
+.skills-category:first-child {
+  text-align: center;
+}
+
+.skills-category:first-child .category-title {
+  justify-content: center;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 2rem;
+}
+
+.skills-category:first-child .skills-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.skills-category:first-child .skill-card {
+  width: 100%;
+  text-align: center;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.skills-category:first-child .skill-card:hover {
+  transform: translateY(-5px);
+}
+
+.skills-category:first-child .skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0 1rem;
+}
+
+.skills-category:first-child .skill-name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+.skills-category:first-child .skill-percent {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.skills-category:first-child .skill-bar {
+  height: 10px;
+  background: var(--border);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.skills-category:first-child .skill-progress {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 5px;
+  width: 0;
+  transition: width 1.5s ease;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .skills-category:first-child .skill-card {
+  background: var(--bg-light);
+}
+
+body.dark-mode .skills-category:first-child .skill-name {
+  color: var(--text);
+}
+
 /* Projects Section */
 .projects-filter {
   display: flex;
