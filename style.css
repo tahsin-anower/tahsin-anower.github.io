@@ -1127,7 +1127,7 @@ body.dark-mode .skills-category:first-child .skill-name {
   color: var(--text);
 }
 
-/* Center only the Technical Skills header, keep content left-aligned */
+/* Technical Skills - Centered Header, Full Width Left-Aligned Content */
 .skills-category:first-child .category-title {
   justify-content: center;
   font-family: 'Georgia', 'Times New Roman', serif;
@@ -1137,21 +1137,97 @@ body.dark-mode .skills-category:first-child .skill-name {
   margin-bottom: 2rem;
 }
 
-/* Reset the Technical Skills grid to left alignment */
+/* Make Technical Skills grid full width */
 .skills-category:first-child .skills-grid {
-  display: block;
-  max-width: none;
-  margin: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
+/* Make skill cards full width */
 .skills-category:first-child .skill-card {
   width: 100%;
   text-align: left;
-  margin-bottom: 1.5rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
 }
 
+.skills-category:first-child .skill-card:hover {
+  transform: translateY(-3px);
+}
+
+/* Full width skill header */
 .skills-category:first-child .skill-header {
+  display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.skills-category:first-child .skill-name {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 1.1rem;
+  flex: 1;
+}
+
+.skills-category:first-child .skill-percent {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-left: 1rem;
+}
+
+/* Full width progress bar */
+.skills-category:first-child .skill-bar {
+  width: 100%;
+  height: 10px;
+  background: var(--border);
+  border-radius: 5px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.skills-category:first-child .skill-progress {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 5px;
+  width: 0;
+  transition: width 1.5s ease;
+}
+
+/* Dark mode adjustments */
+body.dark-mode .skills-category:first-child .skill-card {
+  background: var(--bg-light);
+}
+
+body.dark-mode .skills-category:first-child .skill-name {
+  color: var(--text);
+}
+
+/* Keep Professional Skills centered */
+.skills-category:last-child {
+  text-align: center;
+}
+
+.skills-category:last-child .category-title {
+  justify-content: center;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.skills-category:last-child .skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 /* Ensure Professional Skills section stays centered */
