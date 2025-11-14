@@ -318,5 +318,147 @@ function initStatCounters() {
   });
 }
 
+// Enhanced Contact Form Functionality
+function initContactForm() {
+  const contactForm = document.getElementById('contactForm');
+  
+  if (contactForm) {
+    // Add floating labels functionality
+    const inputs = contactForm.querySelectorAll('input, textarea');
+    
+    inputs.forEach(input => {
+      // Check if input has value on page load
+      if (input.value) {
+        input.parentElement.classList.add('filled');
+      }
+      
+      input.addEventListener('focus', function() {
+        this.parentElement.classList.add('focused');
+      });
+      
+      input.addEventListener('blur', function() {
+        if (!this.value) {
+          this.parentElement.classList.remove('focused');
+        }
+        this.parentElement.classList.toggle('filled', this.value !== '');
+      });
+    });
+    
+    // Form submission
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitBtn = this.querySelector('.submit-btn');
+      const btnText = submitBtn.querySelector('.btn-text');
+      const originalText = btnText.textContent;
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      btnText.textContent = 'Sending...';
+      
+      // Get form data
+      const formData = new FormData(this);
+      const formObject = Object.fromEntries(formData.entries());
+      
+      // Simple validation
+      if (!validateForm(formObject)) {
+        resetButton(submitBtn, btnText, originalText);
+        return;
+      }
+      
+      try {
+        // In a real implementation, you would send this to your backend or Formspree
+        // For now, we'll simulate a successful submission
+        await simulateFormSubmission(formObject);
+        
+        // Show success message
+        showFormMessage('Thank you! Your message has been sent successfully. I\'ll get back to you soon.', 'success');
+        this.reset();
+        
+        // Reset all labels
+        inputs.forEach(input => {
+          input.parentElement.classList.remove('filled', 'focused');
+        });
+        
+      } catch (error) {
+        // Show error message
+        showFormMessage('Sorry, there was an error sending your message. Please try again or contact me directly via email.', 'error');
+      } finally {
+        resetButton(submitBtn, btnText, originalText);
+      }
+    });
+  }
+}
+
+function validateForm(formData) {
+  const { name, email, subject, message } = formData;
+  
+  if (!name || !email || !subject || !message) {
+    showFormMessage('Please fill in all required fields.', 'error');
+    return false;
+  }
+  
+  // Email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    showFormMessage('Please enter a valid email address.', 'error');
+    return false;
+  }
+  
+  return true;
+}
+
+function showFormMessage(message, type) {
+  // Remove existing messages
+  const existingMessage = document.querySelector('.form-message');
+  if (existingMessage) {
+    existingMessage.remove();
+  }
+  
+  // Create new message
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `form-message ${type}`;
+  messageDiv.textContent = message;
+  
+  // Insert after form header
+  const formHeader = document.querySelector('.form-header');
+  formHeader.parentNode.insertBefore(messageDiv, formHeader.nextSibling);
+  
+  // Auto remove after 5 seconds
+  if (type === 'success') {
+    setTimeout(() => {
+      messageDiv.remove();
+    }, 5000);
+  }
+}
+
+function simulateFormSubmission(formData) {
+  return new Promise((resolve, reject) => {
+    // Simulate API call delay
+    setTimeout(() => {
+      // For demo purposes, we'll randomly fail 10% of the time
+      if (Math.random() < 0.1) {
+        reject(new Error('Network error'));
+      } else {
+        resolve(formData);
+        
+        // In a real implementation, you would:
+        // 1. Send data to Formspree or your backend
+        // 2. Handle the actual email delivery
+      }
+    }, 1500);
+  });
+}
+
+function resetButton(button, btnText, originalText) {
+  button.disabled = false;
+  btnText.textContent = originalText;
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  initContactForm();
+});
+
 // Initialize stat counters after DOM is loaded
 document.addEventListener('DOMContentLoaded', initStatCounters);

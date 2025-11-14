@@ -285,60 +285,148 @@
 </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="section">
-      <div class="section-header">
-        <h2 class="section-title">Get In Touch</h2>
-        <div class="section-divider"></div>
-        <p class="section-subtitle">Let's work together!</p>
-      </div>
-      <div class="contact-content">
-        <div class="contact-info">
-          <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <div>
-              <h4>Email</h4>
-              <a href="mailto:tahsin.pro799@gmail.com">tahsin.pro799@gmail.com</a>
+<section id="contact" class="section">
+  <div class="section-header">
+    <h2 class="section-title">Get In Touch</h2>
+    <div class="section-divider"></div>
+    <p class="section-subtitle">Let's work together!</p>
+  </div>
+  
+  <div class="contact-container">
+    <!-- Animated Background Elements -->
+    <div class="contact-bg-animation">
+      <div class="contact-shape shape1"></div>
+      <div class="contact-shape shape2"></div>
+      <div class="contact-shape shape3"></div>
+    </div>
+    
+    <div class="contact-content">
+      <!-- Contact Information -->
+      <div class="contact-info">
+        <div class="contact-info-card">
+          <h3 class="contact-info-title">
+            <i class="fas fa-paper-plane"></i>
+            Let's Connect
+          </h3>
+          <p class="contact-info-description">
+            I'm always open to discussing new opportunities, creative projects, or just having a friendly chat about technology and innovation.
+          </p>
+          
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Email</h4>
+                <a href="mailto:tahsin.pro799@gmail.com" class="contact-link">tahsin.pro799@gmail.com</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Location</h4>
+                <p>Dhaka, Bangladesh</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-details">
+                <h4>Phone</h4>
+                <p>+880 1XXX-XXXXXX</p>
+              </div>
             </div>
           </div>
-          <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
-            <div>
-              <h4>Location</h4>
-              <p>Dhaka, Bangladesh</p>
-            </div>
-          </div>
-          <div class="contact-item">
-            <i class="fas fa-phone"></i>
-            <div>
-              <h4>Phone</h4>
-              <p>+880 1XXX-XXXXXX</p>
+          
+          <div class="contact-social">
+            <h4>Follow Me</h4>
+            <div class="social-links-mini">
+              <a href="https://www.linkedin.com/in/tahsinanower/" class="social-link-mini" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="https://github.com/tahsin-anower" class="social-link-mini" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://x.com/Tahsin_Provat" class="social-link-mini" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://www.facebook.com/tahsin.anower.55028" class="social-link-mini" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-facebook"></i>
+              </a>
+              <a href="https://www.instagram.com/ta_provat/" class="social-link-mini" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-instagram"></i>
+              </a>
             </div>
           </div>
         </div>
+      </div>
+      
+      <!-- Contact Form -->
+      <div class="contact-form-container">
         <form id="contactForm" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <div class="form-group">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <i class="fas fa-user"></i>
+          <div class="form-header">
+            <h3>Send Me a Message</h3>
+            <p>I'll get back to you as soon as possible</p>
           </div>
-          <div class="form-group">
-            <input type="email" name="email" placeholder="Your Email" required>
-            <i class="fas fa-envelope"></i>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <div class="input-container">
+                <input type="text" name="name" id="name" required>
+                <label for="name">Your Name</label>
+                <i class="fas fa-user"></i>
+                <div class="input-underline"></div>
+              </div>
+            </div>
+            
+            <div class="form-group">
+              <div class="input-container">
+                <input type="email" name="email" id="email" required>
+                <label for="email">Your Email</label>
+                <i class="fas fa-envelope"></i>
+                <div class="input-underline"></div>
+              </div>
+            </div>
           </div>
+          
           <div class="form-group">
-            <input type="text" name="subject" placeholder="Subject" required>
-            <i class="fas fa-tag"></i>
+            <div class="input-container">
+              <input type="text" name="subject" id="subject" required>
+              <label for="subject">Subject</label>
+              <i class="fas fa-tag"></i>
+              <div class="input-underline"></div>
+            </div>
           </div>
+          
           <div class="form-group">
-            <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-            <i class="fas fa-comment"></i>
+            <div class="input-container textarea-container">
+              <textarea name="message" id="message" rows="5" required></textarea>
+              <label for="message">Your Message</label>
+              <i class="fas fa-comment"></i>
+              <div class="input-underline"></div>
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary btn-full">
+          
+          <button type="submit" class="btn btn-primary btn-full submit-btn">
+            <span class="btn-text">Send Message</span>
             <i class="fas fa-paper-plane"></i>
-            Send Message
+            <div class="btn-shine"></div>
           </button>
+          
+          <div class="form-footer">
+            <p><i class="fas fa-shield-alt"></i> Your information is safe with me</p>
+          </div>
         </form>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
   </main>
 
   <!-- Footer -->
