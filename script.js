@@ -212,6 +212,51 @@ function animateTimelineItems() {
   });
 }
 
+// Enhanced Experience Section Animation
+function animateTimelineItems() {
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Add staggered animation
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, entry.target.dataset.delay || 0);
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  timelineItems.forEach((item, index) => {
+    // Add staggered delay for multiple items
+    item.dataset.delay = index * 200;
+    observer.observe(item);
+  });
+}
+
+// Add hover effects for timeline dots
+function initTimelineInteractions() {
+  const timelineDots = document.querySelectorAll('.timeline-dot');
+  
+  timelineDots.forEach(dot => {
+    dot.addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.3)';
+      this.style.boxShadow = '0 0 0 4px var(--bg), 0 0 0 8px var(--primary), 0 0 30px var(--primary)';
+    });
+    
+    dot.addEventListener('mouseleave', function() {
+      this.style.transform = 'scale(1)';
+      this.style.boxShadow = '0 0 0 4px var(--bg), 0 0 0 6px var(--primary)';
+    });
+  });
+}
+
+// Initialize when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  animateTimelineItems();
+  initTimelineInteractions();
+});
+
 // Profile Image Effects
 function initProfileImageEffects() {
   const profileImage = document.getElementById('profileImage');
