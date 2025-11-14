@@ -1640,7 +1640,7 @@ body.dark-mode .skills-category:first-child .skill-bar {
   flex: 1;
   padding: 2.5rem;
   border-radius: 20px;
-  margin-left: 1rem;
+  margin-left: 2.5rem; /* Changed from 1rem to 2.5rem */
   position: relative;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   overflow: hidden;
