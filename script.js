@@ -143,26 +143,6 @@ document.addEventListener('DOMContentLoaded', function() {
             this.reset();
         });
     }
-	
-	// Enhanced Experience Section Animation
-	function animateTimelineItems() {
-	  const timelineItems = document.querySelectorAll('.timeline-item');
-	  
-	  const observer = new IntersectionObserver((entries) => {
-		entries.forEach(entry => {
-		  if (entry.isIntersecting) {
-			entry.target.classList.add('visible');
-		  }
-		});
-	  }, { threshold: 0.1 });
-	  
-	  timelineItems.forEach(item => {
-		observer.observe(item);
-	  });
-	}
-
-	// Call the function when the DOM is loaded
-	document.addEventListener('DOMContentLoaded', animateTimelineItems);
 
     // Add click ripple effect to profile image
     const profileImage = document.getElementById('profileImage');
@@ -187,4 +167,25 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 600);
         });
     }
+	
+		
+	// Enhanced Experience Section Animation
+	function animateTimelineItems() {
+	  const timelineItems = document.querySelectorAll('.timeline-item');
+	  
+	  const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+		  if (entry.isIntersecting) {
+			entry.target.classList.add('visible');
+		  }
+		});
+	  }, { threshold: 0.1 });
+	  
+	  timelineItems.forEach(item => {
+		observer.observe(item);
+	  });
+	}
+
+	// Call the function when the DOM is loaded
+	document.addEventListener('DOMContentLoaded', animateTimelineItems);
 });
