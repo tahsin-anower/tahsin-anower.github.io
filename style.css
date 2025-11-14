@@ -2355,17 +2355,6 @@ body.dark-mode .date-end {
   color: var(--primary);
 }
 
-/* Hover effect for Let's Connect icon */
-.contact-info-title i {
-  transition: all 0.3s ease;
-}
-
-.contact-info-title:hover i {
-  transform: scale(1.2) rotate(10deg);
-  color: var(--secondary);
-  text-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
-}
-
 .contact-info-description {
   color: var(--text-light);
   margin-bottom: 2rem;
