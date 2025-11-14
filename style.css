@@ -2352,7 +2352,6 @@ body.dark-mode .date-end {
 
 .contact-info-title i {
   font-size: 1.8rem;
-  text-align: center;
   color: var(--primary);
   transition: all 0.3s ease;
 }
@@ -2648,7 +2647,6 @@ body.dark-mode .date-end {
 
 .submit-btn {
   position: relative;
-  text-align: center;
   overflow: hidden;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   border: none;
@@ -3033,19 +3031,18 @@ body.dark-mode .form-footer {
     font-size: 0.8rem;
     padding: 0.4rem 0.8rem;
   }
-  
-  /* Add this to your CSS file to fix missing icons */
-.feedback-icon::before {
-  content: "💬"; /* Fallback emoji */
-  font-family: 'Font Awesome 6 Free', 'Segoe UI Emoji', sans-serif;
-  font-weight: 900;
+
+/* Center the contact info header */
+.contact-info-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
 }
 
-.feedback-icon i {
-  display: inline-block;
+.contact-info-description {
+  text-align: center;
 }
-
-/* Ensure Font Awesome loads properly */
-@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css');
 
 }
