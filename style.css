@@ -3031,4 +3031,19 @@ body.dark-mode .form-footer {
     font-size: 0.8rem;
     padding: 0.4rem 0.8rem;
   }
+  
+  /* Add this to your CSS file to fix missing icons */
+.feedback-icon::before {
+  content: "💬"; /* Fallback emoji */
+  font-family: 'Font Awesome 6 Free', 'Segoe UI Emoji', sans-serif;
+  font-weight: 900;
+}
+
+.feedback-icon i {
+  display: inline-block;
+}
+
+/* Ensure Font Awesome loads properly */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css');
+
 }
