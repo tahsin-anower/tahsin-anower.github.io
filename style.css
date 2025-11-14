@@ -2352,6 +2352,7 @@ body.dark-mode .date-end {
 
 .contact-info-title i {
   font-size: 1.8rem;
+  text-align: center;
   color: var(--primary);
   transition: all 0.3s ease;
 }
@@ -2647,6 +2648,7 @@ body.dark-mode .date-end {
 
 .submit-btn {
   position: relative;
+  text-align: center;
   overflow: hidden;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   border: none;
