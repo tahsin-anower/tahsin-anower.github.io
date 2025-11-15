@@ -3021,6 +3021,14 @@ body.dark-mode .input-container textarea:not(:placeholder-shown) + label {
   max-width: 500px;
 }
 
+/* For 6 items, we'll have 3 columns on larger screens */
+@media (min-width: 769px) {
+  .platforms-grid {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 600px;
+  }
+}
+
 .platform-link {
   display: block;
   text-decoration: none;
@@ -3092,6 +3100,10 @@ body.dark-mode .input-container textarea:not(:placeholder-shown) + label {
 .platform-link:nth-child(4) .platform-icon { background: #1877f2; }
 .platform-link:nth-child(5) .platform-icon { 
   background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); 
+}
+
+.platform-link:nth-child(6) .platform-icon { 
+  background: #ff4500; /* Reddit's official orange color */
 }
 
 .platform-link:hover .platform-icon {
