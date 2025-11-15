@@ -209,7 +209,7 @@ function initContactForm() {
         });
         
         if (response.ok) {
-          showFormMessage('🎉 Thank you! Your message has been sent successfully. I\'ll get back to you within 24 hours.', 'success');
+          showFormMessage('🎉 Message received! I’ll get back to you very soon.', 'success');
           this.reset();
           
           // Reset all labels
@@ -218,7 +218,7 @@ function initContactForm() {
           });
         } else {
           const errorData = await response.json();
-          throw new Error(errorData.error || 'Form submission failed. Please try again.');
+          throw new Error(errorData.error || 'Submission failed. Please try again.');
         }
         
       } catch (error) {
