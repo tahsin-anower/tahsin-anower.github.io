@@ -2301,7 +2301,7 @@ body.dark-mode .date-end {
   align-items: start;
 }
 
-/* Contact Information Card - ORIGINAL STYLE */
+/* Contact Information Card - UPDATED WITH CENTERED HEADER */
 .contact-info-card {
   background: linear-gradient(135deg, 
     rgba(99, 102, 241, 0.05) 0%,
@@ -2338,27 +2338,59 @@ body.dark-mode .date-end {
     0 8px 24px rgba(139, 92, 246, 0.1);
 }
 
-.contact-info-title {
+/* NEW: Centered header for Let's Connect card */
+.contact-info-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+}
+
+.contact-info-icon {
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  justify-content: center;
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-info-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.contact-info-card:hover .contact-info-icon::before {
+  left: 100%;
+}
+
+.contact-info-card:hover .contact-info-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.5);
+}
+
+.contact-info-title {
   font-size: 1.5rem;
   color: var(--text);
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.contact-info-title i {
-  font-size: 1.8rem;
-  color: var(--primary);
-  transition: all 0.3s ease;
-}
-
-.contact-info-title:hover i {
-  transform: scale(1.2) rotate(10deg);
-  color: var(--secondary);
+  margin: 0;
 }
 
 .contact-info-description {
@@ -2366,6 +2398,7 @@ body.dark-mode .date-end {
   margin-bottom: 2rem;
   line-height: 1.6;
   font-size: 1rem;
+  text-align: center;
 }
 
 .contact-items {
@@ -2469,17 +2502,21 @@ body.dark-mode .date-end {
   margin-bottom: 2rem;
 }
 
+.form-header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
 .form-header h3 {
   font-size: 1.6rem;
-  margin-bottom: 0.5rem;
+  margin: 0;
   color: var(--text);
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
 }
 
 .form-header p {
@@ -2487,42 +2524,41 @@ body.dark-mode .date-end {
   font-size: 0.95rem;
 }
 
-/* Professional Feedback Icon */
+/* Updated Feedback Icon */
 .feedback-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  width: 70px;
+  height: 70px;
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   color: white;
-  font-size: 1.5rem;
-  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   overflow: hidden;
-  transition: all 0.4s ease;
 }
 
 .feedback-icon::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
+  left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.contact-form-container:hover .feedback-icon {
-  transform: scale(1.05);
-  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.5);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s;
 }
 
 .contact-form-container:hover .feedback-icon::before {
-  opacity: 1;
+  left: 100%;
+}
+
+.contact-form-container:hover .feedback-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.5);
 }
 
 /* Form Elements with Visible Borders */
@@ -2645,21 +2681,29 @@ body.dark-mode .date-end {
   width: 100%;
 }
 
+/* NEW: Centered submit button container */
+.submit-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
 .submit-btn {
   position: relative;
   overflow: hidden;
   background: linear-gradient(135deg, var(--primary), var(--primary-dark));
   border: none;
-  padding: 1.2rem 2rem;
+  padding: 1.2rem 2.5rem;
   border-radius: 12px;
   font-weight: 600;
   font-size: 1rem;
   transition: all 0.3s ease;
-  margin-top: 1rem;
-  width: 100%;
   color: white;
   cursor: pointer;
   box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .submit-btn:hover {
@@ -2679,28 +2723,6 @@ body.dark-mode .date-end {
 
 .submit-btn:hover .btn-shine {
   left: 100%;
-}
-
-.form-footer {
-  text-align: center;
-  margin-top: 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.form-footer p {
-  color: var(--text-light);
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-weight: 500;
-}
-
-.form-footer i {
-  color: var(--secondary);
-  font-size: 1rem;
 }
 
 /* Dark Mode Adjustments */
@@ -2742,10 +2764,6 @@ body.dark-mode .input-container textarea:not(:placeholder-shown) + label {
   background: linear-gradient(135deg, var(--bg-light), var(--bg));
 }
 
-body.dark-mode .form-footer {
-  border-top-color: rgba(255, 255, 255, 0.1);
-}
-
 /* Responsive Design */
 @media (max-width: 968px) {
   .contact-content {
@@ -2772,14 +2790,13 @@ body.dark-mode .form-footer {
   
   .form-header h3 {
     font-size: 1.4rem;
-    flex-direction: column;
-    gap: 0.8rem;
   }
   
+  .contact-info-icon,
   .feedback-icon {
-    width: 50px;
-    height: 50px;
-    font-size: 1.3rem;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
   }
   
   .input-container input,
@@ -3032,70 +3049,10 @@ body.dark-mode .form-footer {
     padding: 0.4rem 0.8rem;
   }
 
-/* Center the contact info header */
-.contact-info-title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  text-align: center;
-}
-
-.contact-info-description {
-  text-align: center;
-}
-
-/* Center Let's Connect header */
-.contact-info-title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  text-align: center;
-}
-
-.contact-info-description {
-  text-align: center;
-}
-
-/* Center submit button text */
-.submit-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.submit-btn .btn-text {
-  flex: 1;
-  text-align: center;
-}
-
-/* Add icon to Feedback header */
-.form-header h3 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.feedback-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 1.3rem;
-  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-  transition: all 0.3s ease;
-}
-
-.feedback-icon:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
-}
-
+  /* Mobile adjustments for contact section */
+  .contact-info-header,
+  .form-header-content {
+    flex-direction: column;
+    text-align: center;
+  }
 }
