@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
   initBackToTop();
   animateTimelineItems();
   initProfileImageEffects();
+  initStatCounters();
+  initTimelineInteractions();
   
   // Set current year in footer
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -139,7 +141,7 @@ function initSkillAnimations() {
   });
 }
 
-// Contact Form
+// Contact Form - UPDATED FOR FORMSPREE
 function initContactForm() {
   const contactForm = document.getElementById('contactForm');
   
@@ -178,7 +180,24 @@ function initContactForm() {
       btnText.textContent = 'Sending...';
       
       try {
+        // Get form data
         const formData = new FormData(this);
+        
+        // Simple validation
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const subject = formData.get('subject');
+        const message = formData.get('message');
+        
+        if (!name || !email || !subject || !message) {
+          throw new Error('Please fill in all required fields.');
+        }
+        
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+          throw new Error('Please enter a valid email address.');
+        }
         
         // Send to Formspree
         const response = await fetch(this.action, {
@@ -190,7 +209,7 @@ function initContactForm() {
         });
         
         if (response.ok) {
-          showFormMessage('Thank you! Your message has been sent successfully. I\'ll get back to you soon.', 'success');
+          showFormMessage('🎉 Thank you! Your message has been sent successfully. I\'ll get back to you within 24 hours.', 'success');
           this.reset();
           
           // Reset all labels
@@ -198,14 +217,64 @@ function initContactForm() {
             input.parentElement.classList.remove('filled', 'focused');
           });
         } else {
-          throw new Error('Form submission failed');
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Form submission failed. Please try again.');
         }
+        
       } catch (error) {
-        showFormMessage('Sorry, there was an error sending your message. Please try again or contact me directly via email.', 'error');
+        console.error('Form submission error:', error);
+        showFormMessage(`❌ ${error.message}`, 'error');
       } finally {
-        resetButton(submitBtn, btnText, originalText);
+        // Reset button state
+        submitBtn.disabled = false;
+        btnText.textContent = originalText;
       }
     });
+  }
+}
+
+// Show form message
+function showFormMessage(message, type) {
+  // Remove existing messages
+  const existingMessage = document.querySelector('.form-message');
+  if (existingMessage) {
+    existingMessage.remove();
+  }
+  
+  // Create new message
+  const messageDiv = document.createElement('div');
+  messageDiv.className = `form-message ${type}`;
+  messageDiv.innerHTML = `
+    <div class="message-content">
+      <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+      <span>${message}</span>
+    </div>
+  `;
+  
+  // Add styles for the message
+  messageDiv.style.cssText = `
+    background: ${type === 'success' ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)'};
+    border: 1px solid ${type === 'success' ? 'rgba(16, 185, 129, 0.3)' : 'rgba(239, 68, 68, 0.3)'};
+    color: ${type === 'success' ? '#10b981' : '#ef4444'};
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    font-weight: 500;
+  `;
+  
+  // Insert after form header
+  const formHeader = document.querySelector('.form-header');
+  if (formHeader) {
+    formHeader.parentNode.insertBefore(messageDiv, formHeader.nextSibling);
+  }
+  
+  // Auto remove after 8 seconds for success messages
+  if (type === 'success') {
+    setTimeout(() => {
+      if (messageDiv.parentNode) {
+        messageDiv.remove();
+      }
+    }, 8000);
   }
 }
 
@@ -226,23 +295,6 @@ function initBackToTop() {
       top: 0,
       behavior: 'smooth'
     });
-  });
-}
-
-// Enhanced Experience Section Animation
-function animateTimelineItems() {
-  const timelineItems = document.querySelectorAll('.timeline-item');
-  
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.1 });
-  
-  timelineItems.forEach(item => {
-    observer.observe(item);
   });
 }
 
@@ -284,12 +336,6 @@ function initTimelineInteractions() {
     });
   });
 }
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  animateTimelineItems();
-  initTimelineInteractions();
-});
 
 // Profile Image Effects
 function initProfileImageEffects() {
@@ -351,148 +397,3 @@ function initStatCounters() {
     observer.observe(stat);
   });
 }
-
-// Enhanced Contact Form Functionality
-function initContactForm() {
-  const contactForm = document.getElementById('contactForm');
-  
-  if (contactForm) {
-    // Add floating labels functionality
-    const inputs = contactForm.querySelectorAll('input, textarea');
-    
-    inputs.forEach(input => {
-      // Check if input has value on page load
-      if (input.value) {
-        input.parentElement.classList.add('filled');
-      }
-      
-      input.addEventListener('focus', function() {
-        this.parentElement.classList.add('focused');
-      });
-      
-      input.addEventListener('blur', function() {
-        if (!this.value) {
-          this.parentElement.classList.remove('focused');
-        }
-        this.parentElement.classList.toggle('filled', this.value !== '');
-      });
-    });
-    
-    // Form submission
-    contactForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      const submitBtn = this.querySelector('.submit-btn');
-      const btnText = submitBtn.querySelector('.btn-text');
-      const originalText = btnText.textContent;
-      
-      // Show loading state
-      submitBtn.disabled = true;
-      btnText.textContent = 'Sending...';
-      
-      // Get form data
-      const formData = new FormData(this);
-      const formObject = Object.fromEntries(formData.entries());
-      
-      // Simple validation
-      if (!validateForm(formObject)) {
-        resetButton(submitBtn, btnText, originalText);
-        return;
-      }
-      
-      try {
-        // In a real implementation, you would send this to your backend or Formspree
-        // For now, we'll simulate a successful submission
-        await simulateFormSubmission(formObject);
-        
-        // Show success message
-        showFormMessage('Thank you! Your message has been sent successfully. I\'ll get back to you soon.', 'success');
-        this.reset();
-        
-        // Reset all labels
-        inputs.forEach(input => {
-          input.parentElement.classList.remove('filled', 'focused');
-        });
-        
-      } catch (error) {
-        // Show error message
-        showFormMessage('Sorry, there was an error sending your message. Please try again or contact me directly via email.', 'error');
-      } finally {
-        resetButton(submitBtn, btnText, originalText);
-      }
-    });
-  }
-}
-
-function validateForm(formData) {
-  const { name, email, subject, message } = formData;
-  
-  if (!name || !email || !subject || !message) {
-    showFormMessage('Please fill in all required fields.', 'error');
-    return false;
-  }
-  
-  // Email validation
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailRegex.test(email)) {
-    showFormMessage('Please enter a valid email address.', 'error');
-    return false;
-  }
-  
-  return true;
-}
-
-function showFormMessage(message, type) {
-  // Remove existing messages
-  const existingMessage = document.querySelector('.form-message');
-  if (existingMessage) {
-    existingMessage.remove();
-  }
-  
-  // Create new message
-  const messageDiv = document.createElement('div');
-  messageDiv.className = `form-message ${type}`;
-  messageDiv.textContent = message;
-  
-  // Insert after form header
-  const formHeader = document.querySelector('.form-header');
-  formHeader.parentNode.insertBefore(messageDiv, formHeader.nextSibling);
-  
-  // Auto remove after 5 seconds
-  if (type === 'success') {
-    setTimeout(() => {
-      messageDiv.remove();
-    }, 5000);
-  }
-}
-
-function simulateFormSubmission(formData) {
-  return new Promise((resolve, reject) => {
-    // Simulate API call delay
-    setTimeout(() => {
-      // For demo purposes, we'll randomly fail 10% of the time
-      if (Math.random() < 0.1) {
-        reject(new Error('Network error'));
-      } else {
-        resolve(formData);
-        
-        // In a real implementation, you would:
-        // 1. Send data to Formspree or your backend
-        // 2. Handle the actual email delivery
-      }
-    }, 1500);
-  });
-}
-
-function resetButton(button, btnText, originalText) {
-  button.disabled = false;
-  btnText.textContent = originalText;
-}
-
-// Initialize when DOM is loaded
-document.addEventListener('DOMContentLoaded', function() {
-  initContactForm();
-});
-
-// Initialize stat counters after DOM is loaded
-document.addEventListener('DOMContentLoaded', initStatCounters);
