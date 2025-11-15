@@ -144,33 +144,67 @@ function initContactForm() {
   const contactForm = document.getElementById('contactForm');
   
   if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    // Add floating labels functionality
+    const inputs = contactForm.querySelectorAll('input, textarea');
+    
+    inputs.forEach(input => {
+      // Check if input has value on page load
+      if (input.value) {
+        input.parentElement.classList.add('filled');
+      }
+      
+      input.addEventListener('focus', function() {
+        this.parentElement.classList.add('focused');
+      });
+      
+      input.addEventListener('blur', function() {
+        if (!this.value) {
+          this.parentElement.classList.remove('focused');
+        }
+        this.parentElement.classList.toggle('filled', this.value !== '');
+      });
+    });
+    
+    // Form submission
+    contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       
-      // Get form data
-      const formData = new FormData(this);
-      const name = formData.get('name');
-      const email = formData.get('email');
-      const subject = formData.get('subject');
-      const message = formData.get('message');
+      const submitBtn = this.querySelector('.submit-btn');
+      const btnText = submitBtn.querySelector('.btn-text');
+      const originalText = btnText.textContent;
       
-      // Simple validation
-      if (!name || !email || !subject || !message) {
-        alert('Please fill in all fields');
-        return;
+      // Show loading state
+      submitBtn.disabled = true;
+      btnText.textContent = 'Sending...';
+      
+      try {
+        const formData = new FormData(this);
+        
+        // Send to Formspree
+        const response = await fetch(this.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          showFormMessage('Thank you! Your message has been sent successfully. I\'ll get back to you soon.', 'success');
+          this.reset();
+          
+          // Reset all labels
+          inputs.forEach(input => {
+            input.parentElement.classList.remove('filled', 'focused');
+          });
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (error) {
+        showFormMessage('Sorry, there was an error sending your message. Please try again or contact me directly via email.', 'error');
+      } finally {
+        resetButton(submitBtn, btnText, originalText);
       }
-      
-      // Email validation
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address');
-        return;
-      }
-      
-      // In a real application, you would send the form data to a server here
-      // For now, we'll just show a success message
-      alert('Thank you for your message! I will get back to you soon.');
-      this.reset();
     });
   }
 }
